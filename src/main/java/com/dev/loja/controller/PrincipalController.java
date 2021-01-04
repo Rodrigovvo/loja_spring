@@ -19,6 +19,6 @@ public class PrincipalController {
     
     @GetMapping("/usuarios/cadastrar")
     public String acessarListaUsucarios(){
-        return "administrativo/usuarios/lista";
+        return "administrativo/usuarios/cadastro";
     }
 }
