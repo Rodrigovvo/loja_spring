@@ -23,6 +23,7 @@ public class PrincipalController {
         return "administrativo/home";
     }
     
+    //Cadastrar os funcionários
 
     @GetMapping("/funcionarios/cadastrar")
     public ModelAndView acessarCadastroUsucario (Funcionario funcionario){
@@ -41,10 +42,12 @@ public class PrincipalController {
     	}
     }
     
+    
+    // Listar os funcionários
     @GetMapping("/funcionarios/listar")
     public ModelAndView acessarListaUsucarios(){
     	ModelAndView mv = new ModelAndView("administrativo/funcionarios/lista");
-    	mv.addObject("listaUsuarios", funcionarioRepo.findAll());
+    	mv.addObject("listaFuncionarios", funcionarioRepo.findAll());
         return mv;
     }
 }
