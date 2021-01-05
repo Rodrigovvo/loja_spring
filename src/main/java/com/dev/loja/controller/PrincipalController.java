@@ -24,25 +24,27 @@ public class PrincipalController {
     }
     
 
-    @GetMapping("/usuarios/cadastrar")
+    @GetMapping("/funcionarios/cadastrar")
     public ModelAndView acessarCadastroUsucario (Funcionario funcionario){
-        ModelAndView mv = new ModelAndView("administrativo/usuarios/cadastro");
+        ModelAndView mv = new ModelAndView("administrativo/funcionarios/cadastro");
         mv.addObject("funcionario", funcionario);
         
     	return mv;
     }
-    @PostMapping("/usuarios/cadastrar")
+    @PostMapping("/funcionarios/cadastrar")
     public ModelAndView salvarUsuario(@Valid Funcionario funcionario, BindingResult resul) {
     	if(resul.hasErrors()) {
     		return acessarCadastroUsucario(funcionario);
     	}else {
-    		funcionarioRepo.save(funcionario);
+    		funcionarioRepo.saveAndFlush(funcionario);
     		return acessarCadastroUsucario(new Funcionario());
     	}
     }
     
-    @GetMapping("/usuarios/listar")
-    public String acessarListaUsucarios(){
-        return "administrativo/usuarios/lista";
+    @GetMapping("/funcionarios/listar")
+    public ModelAndView acessarListaUsucarios(){
+    	ModelAndView mv = new ModelAndView("administrativo/funcionarios/lista");
+    	mv.addObject("listaUsuarios", funcionarioRepo.findAll());
+        return mv;
     }
 }
