@@ -1,11 +1,14 @@
 package com.dev.loja.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,6 +26,7 @@ public class PrincipalController {
         return "administrativo/home";
     }
     
+    
     //Cadastrar os funcionários
 
     @GetMapping("/funcionarios/cadastrar")
@@ -32,6 +36,23 @@ public class PrincipalController {
         
     	return mv;
     }
+    
+    @GetMapping("/funcionarios/editar/{id}")
+    public ModelAndView editarFuncionario(@PathVariable("id") long id) {
+		Optional<Funcionario> funcionario =  funcionarioRepo.findById(id);
+    	return acessarCadastroUsucario(funcionario.get());
+    	
+    }
+    
+    @GetMapping("/funcionarios/remover/{id}")
+    public ModelAndView removerFuncionario(@PathVariable("id") long id) {
+    	Optional<Funcionario> funcionario =  funcionarioRepo.findById(id);
+		funcionarioRepo.delete(funcionario.get());
+    	return acessarListaUsucarios();
+    	
+    }
+    
+    
     @PostMapping("/funcionarios/cadastrar")
     public ModelAndView salvarUsuario(@Valid Funcionario funcionario, BindingResult resul) {
     	if(resul.hasErrors()) {

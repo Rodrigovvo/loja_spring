@@ -18,6 +18,9 @@ public class Funcionario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	public void setId(long id) {
+		this.id = id;
+	}
 	private String nome;
 	private Double salarioBruto;
 	@Temporal(TemporalType.DATE)
