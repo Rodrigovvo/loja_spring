@@ -3,9 +3,9 @@ package com.dev.loja.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dev.loja.model.Estado;
+import com.dev.loja.model.Cidade;
 
 @Repository
-public interface EstadoRepository extends JpaRepository<Estado, Long>{
+public interface CidadeRepository extends JpaRepository<Cidade, Long>{
 
 }

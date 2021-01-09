@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 @Table(name="funcionario")
 public class Funcionario {
 	
+	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
