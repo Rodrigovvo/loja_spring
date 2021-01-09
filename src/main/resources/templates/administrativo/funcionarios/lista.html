@@ -107,6 +107,8 @@
 							<th scope="nome">Nome</th>
 							<th scope="cargo">Cargo</th>
 							<th scope="salario">Salário</th>
+							<th scope="cidade">Cidade</th>
+							
 							<th scope="acao">Ação</th>
 						</tr>
 					</thead>
@@ -116,6 +118,7 @@
 							<td th:text="${funcionario.nome}"></td>
 							<td th:text="${funcionario.cargo}"></td>
 							<td th:text="${funcionario.salarioBruto}"></td>
+							<td th:text="${funcionario.cidade}"></td>
 							<td colspan="2">
 								<a class="btn btn-info btn-sm"
 									th:href="@{/funcionarios/editar/{id}(id=${funcionario.id})}"
