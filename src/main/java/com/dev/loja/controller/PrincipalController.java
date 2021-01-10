@@ -10,5 +10,4 @@ public class PrincipalController {
     public String acessarPrincipal(){
         return "administrativo/home";
     }
-    
 }

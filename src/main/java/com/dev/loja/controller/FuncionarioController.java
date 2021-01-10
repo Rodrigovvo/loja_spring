@@ -21,13 +21,9 @@ public class FuncionarioController {
 	
 	@Autowired
 	private FuncionarioRepository funcionarioRepo;
-	
-
 	@Autowired
 	private CidadeRepository cidadeRepo;
    
-    //Cadastrar os funcionários
-
     @GetMapping("/funcionarios/cadastrar")
     public ModelAndView acessarCadastroUsucario (Funcionario funcionario){
         ModelAndView mv = new ModelAndView("administrativo/funcionarios/cadastro");

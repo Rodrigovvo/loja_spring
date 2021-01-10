@@ -20,8 +20,7 @@ public class EstadoController {
 	
 	@Autowired
 	private EstadoRepository estadoRepo;
-    
-    //Cadastrar os funcionários
+
 
     @GetMapping("/estados/cadastrar")
     public ModelAndView acessarCadastroEstado (Estado estado){
