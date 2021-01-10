@@ -93,10 +93,13 @@ public class ProdutoController {
 	@ResponseBody
 	public byte[] mostrarImagem(@PathVariable("imagem") String imagem) throws IOException {
 		File imageArquivo = new File(IMAGE_URL + imagem);
-		if (imagem != null || imagem.trim().length() > 0) {
-			return Files.readAllBytes(imageArquivo.toPath());
+		byte[] nulo = null;
+		if (imagem != null) {
+			if(imagem.trim().length() > 0) 
+				return Files.readAllBytes(imageArquivo.toPath());
 		} else {
-			return null;
+			return nulo;
 		}
+		return nulo;
 	}
 }
