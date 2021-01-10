@@ -24,8 +24,6 @@ public class CidadeController {
 	
 	@Autowired
 	private EstadoRepository estadoRepo;
-    
-    //Cadastrar os funcionários
 
     @GetMapping("/cidades/cadastrar")
     public ModelAndView acessarCadastroCidade (Cidade cidade){

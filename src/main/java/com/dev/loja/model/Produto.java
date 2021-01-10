@@ -21,7 +21,7 @@ public class Produto {
 	private String categoria;
 	private String marca;
 	private Double valorVenda;
-	private Double quantidadeEstoque = 0.0;
+	private int quantidadeEstoque = 0;
 
 	public long getId() {
 		return id;
@@ -71,11 +71,11 @@ public class Produto {
 		this.valorVenda = valorVenda;
 	}
 
-	public Double getQuantidadeEstoque() {
+	public int getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}
 
-	public void setQuantidadeEstoque(Double quantidadeEstoque) {
+	public void setQuantidadeEstoque(int quantidadeEstoque) {
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
 

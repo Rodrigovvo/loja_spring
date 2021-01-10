@@ -21,14 +21,11 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepo;
 
-    
-    //Cadastrar os funcionários
-
     @GetMapping("/produtos/cadastrar")
     public ModelAndView acessarCadastroProduto (Produto produto){
         ModelAndView mv = new ModelAndView("administrativo/produtos/cadastro");
         mv.addObject("produto", produto);
-        
+      
     	return mv;
     }
     
