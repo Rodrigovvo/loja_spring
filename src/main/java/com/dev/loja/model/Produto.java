@@ -22,6 +22,15 @@ public class Produto {
 	private String marca;
 	private Double valorVenda;
 	private int quantidadeEstoque = 0;
+	private String nomeImagem;
+
+	public String getNomeImagem() {
+		return nomeImagem;
+	}
+
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
+	}
 
 	public long getId() {
 		return id;

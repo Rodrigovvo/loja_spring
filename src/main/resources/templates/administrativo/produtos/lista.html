@@ -30,6 +30,7 @@
 							<th scope="valor">Valor</th>
 							<th scope="quantidade">Estoque</th>
 							<th scope="marca">Marca</th>
+							<th scope="imagem">Imagem</th>
 							<th scope="acao">Ação</th>
 						</tr>
 					</thead>
@@ -40,6 +41,8 @@
 							<td th:text="${produto.valorVenda}"></td>
 							<td th:text="${produto.quantidadeEstoque}"></td>
 							<td th:text="${produto.marca}"></td>
+							<td><img th:src="@{/produtos/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}" 
+								alt="imagem produto" width="100px"/></td>
 
 							<td colspan="2"><a class="btn btn-info btn-sm"
 								th:href="@{/produtos/editar/{id}(id=${produto.id})}" role="button">

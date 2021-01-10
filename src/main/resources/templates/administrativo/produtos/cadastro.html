@@ -24,6 +24,7 @@
 
 		<div class="container" id="cadastro">
 			<form action="/produtos/cadastrar"
+				enctype="multipart/form-data"
 				method="POST" th:object="${produto}">
 				<div class="form-row">
 					<div class="form-group col-md-6">
@@ -69,6 +70,15 @@
 						<div class="invalid-feedback"></div>
 					</div>
 				</div>
+					<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="valorVenda">Imagem</label> <input type="file"
+							class="form-control" id="nomeImagem" autofocus="autofocus" 
+							value="" name="file" />
+						<div class="invalid-feedback"></div>
+					</div>
+				</div>
+				
 				<input type="hidden" id="id"  th:field="*{id}" value="" /> 
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 			</form>
