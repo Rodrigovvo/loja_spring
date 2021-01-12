@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.TemporalType;
 
 //Classe responsável pela aquisição dos produtos
 @Entity
@@ -23,8 +24,9 @@ public class Entrada implements Serializable{
 
 	@ManyToOne
 	private Funcionario funcionario;
+	@javax.persistence.Temporal(TemporalType.DATE)
 	private Date dataEntrada = new Date();
-	// TODO: private Fonercedor fornecedor;
+	// TODO: private Fonecedor fornecedor;
 	private String fornecedor;
 	private String observacao;
 

@@ -10,4 +10,7 @@ INSERT INTO produto (id, nome, descricao, categoria, marca, valor_venda, quantid
   (200000, 'Eliza', 1550, 'Estoquista'),
   (300000, 'Carlos', 1300, 'Atendente');
   
- 	
+ INSERT INTO papeis (id, nome) VALUES
+  (100000, 'Caixa'),
+  (200000, 'Estoquista'),
+  (300000, 'Atendente');
