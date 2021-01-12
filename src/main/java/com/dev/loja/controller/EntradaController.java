@@ -19,48 +19,43 @@ import com.dev.loja.repository.ProdutoRepository;
 
 @Controller
 public class EntradaController {
-	
+
 	public List<EntradaItens> listaEntradaItens = new ArrayList<>();
-	
+
 	@Autowired
 	private EntradaRepository entradaRepo;
-	
+
 	@Autowired
 	private EntradaItensRepository entradaItensRepo;
-	
+
 	@Autowired
 	private FuncionarioRepository funcionarioRepo;
 
 	@Autowired
 	private ProdutoRepository produtoRepo;
 
+	@GetMapping("/entrada/cadastrar")
+	public ModelAndView acessarEntradas(Entrada entrada, EntradaItens entradaItens) {
+		ModelAndView mv = new ModelAndView("administrativo/entrada/cadastro");
+		mv.addObject("listaEntradaItens", this.listaEntradaItens);
+		mv.addObject("entrada", entrada);
+		mv.addObject("entradaItens", entradaItens);
+		mv.addObject("listaFuncionarios", funcionarioRepo.findAll());
+		mv.addObject("listaProdutos", produtoRepo.findAll());
 
-    @GetMapping("/entrada/cadastrar")
-    public ModelAndView acessarEntradas (Entrada entrada, 
-    		EntradaItens entradaItens){
-        ModelAndView mv = new ModelAndView("administrativo/entrada/cadastro");
-        mv.addObject("listaEntradaItens", this.listaEntradaItens);
-        mv.addObject("entrada", entrada);
-        mv.addObject("entradaItens", entradaItens);
-        mv.addObject("listaFuncionarios", funcionarioRepo.findAll());
-        mv.addObject("listaProdutos", produtoRepo.findAll());
-        
-    	return mv;
-    }
-    
-    @PostMapping("/entrada/cadastrar")
-    public ModelAndView salvarEntrada(
-    		String acao,
-    		Entrada entrada,
-    		EntradaItens entradaItens) {
-    		
-    	switch (acao) {
+		return mv;
+	}
+
+	@PostMapping("/entrada/cadastrar")
+	public ModelAndView salvarEntrada(String acao, Entrada entrada, EntradaItens entradaItens) {
+
+		switch (acao) {
 		case "itens":
 			this.listaEntradaItens.add(entradaItens);
 			break;
 		case "salvar":
 			entradaRepo.saveAndFlush(entrada);
-			for(EntradaItens it: this.listaEntradaItens) {
+			for (EntradaItens it : this.listaEntradaItens) {
 				it.setEntrada(entrada);
 				entradaItensRepo.saveAndFlush(it);
 				Produto produto = produtoRepo.findById(it.getProduto().getId()).get();
@@ -74,16 +69,15 @@ public class EntradaController {
 		default:
 			break;
 		}
-    		return acessarEntradas(entrada, new EntradaItens());
+		return acessarEntradas(entrada, new EntradaItens());
 
-    }
-    
-    
-	/*
-	 * // Listar os funcionários
-	 * 
-	 * @GetMapping("/cidades/listar") public ModelAndView acessarListaCidades(){
-	 * ModelAndView mv = new ModelAndView("administrativo/cidades/lista");
-	 * mv.addObject("listaCidades", cidadeRepo.findAll()); return mv; }
-	 */
+	}
+
+	@GetMapping("/entrada/listar")
+	public ModelAndView acessarListaCidades() {
+		ModelAndView mv = new ModelAndView("administrativo/entrada/lista");
+		mv.addObject("listaEntrada", entradaRepo.findAll());
+		return mv;
+	}
+
 }
