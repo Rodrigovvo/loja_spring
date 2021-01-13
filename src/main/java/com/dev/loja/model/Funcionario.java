@@ -14,9 +14,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="funcionario")
 public class Funcionario {
-	
-	@SuppressWarnings("unused")
-	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -39,7 +37,7 @@ public class Funcionario {
 	private String bairro;
 	private String uf;
 	private String cep;
-	//Acesso SPring Secutrity
+	//Acesso Spring Secutrity
 	private String email;
 	private String senha;
 	

@@ -28,14 +28,18 @@ public class BasicConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// neste método que vamos tratar os usuários
 		// do banco....
-		auth.inMemoryAuthentication().withUser("user").password(new BCryptPasswordEncoder().encode("123")).roles("gerente")
-				.and().withUser("admin").password(new BCryptPasswordEncoder().encode("admin")).roles("vendedor");
+		auth.inMemoryAuthentication().withUser("user").password(new BCryptPasswordEncoder().encode("123"))
+				.authorities("vendedor")
+					.and().withUser("admin").password(new BCryptPasswordEncoder()
+						.encode("admin")).authorities("gerente");
 
 		auth.jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery(
 						"select email as username, senha as password, 1 as enable from funcionario where email=?")
 				.authoritiesByUsernameQuery(
-						"select funcionario.email as username, papel.nome as authority from permissoes inner join funcionario on funcionario.id=permissoes.funcionario_id inner join papel on permissoes.papel_id=papel.id where funcionario.email=?")
+						"select funcionario.email as username, papeis.nome as authority from permissoes"
+						+ " inner join funcionario on funcionario.id=permissoes.funcionario_id inner join papeis on"
+						+ " permissoes.papel_id=papeis.id where funcionario.email=?")
 				.passwordEncoder(new BCryptPasswordEncoder());
 
 	}
@@ -43,8 +47,10 @@ public class BasicConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers("/entrada/**").hasAnyRole("gerente")
-				.antMatchers("/administrativo/**").hasAnyRole("gerente", "vendedor")
+				.antMatchers("/entrada/**").hasAuthority("gerente")
+				.antMatchers("/funcionarios/**").hasAuthority("gerente")
+				.antMatchers("/permissoes/**").hasAuthority("gerente")
+				.antMatchers("/administrativo/**").hasAnyAuthority("gerente", "vendedor")
 				.and().formLogin().loginPage("/login").permitAll().and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/administrativo").and()
 				.exceptionHandling().accessDeniedPage("/negado");
