@@ -25,7 +25,7 @@ public class CidadeController {
 	@Autowired
 	private EstadoRepository estadoRepo;
 
-    @GetMapping("/cidades/cadastrar")
+    @GetMapping("/administrativo/cidades/cadastrar")
     public ModelAndView acessarCadastroCidade (Cidade cidade){
         ModelAndView mv = new ModelAndView("administrativo/cidades/cadastro");
         mv.addObject("listaEstados", estadoRepo.findAll());
@@ -34,14 +34,14 @@ public class CidadeController {
     	return mv;
     }
     
-    @GetMapping("/cidades/editar/{id}")
+    @GetMapping("/administrativo/cidades/editar/{id}")
     public ModelAndView editarCidade(@PathVariable("id") long id) {
     	Cidade cidade =  cidadeRepo.findById(id).get();
         return acessarCadastroCidade(cidade);
 
     }
     
-    @GetMapping("/cidades/remover/{id}")
+    @GetMapping("/administrativo/cidades/remover/{id}")
     public ModelAndView removerCidade(@PathVariable("id") long id) {
     	Optional<Cidade> cidade =  cidadeRepo.findById(id);
 		cidadeRepo.delete(cidade.get());
@@ -50,7 +50,7 @@ public class CidadeController {
     }
     
     
-    @PostMapping("/cidades/cadastrar")
+    @PostMapping("/administrativo/cidades/cadastrar")
     public ModelAndView salvarCidade(@Valid Cidade cidade, BindingResult resul) {
     	if(resul.hasErrors()) {
     		return acessarCadastroCidade(cidade);
@@ -62,7 +62,7 @@ public class CidadeController {
     
     
     // Listar os funcionários
-    @GetMapping("/cidades/listar")
+    @GetMapping("/administrativo/cidades/listar")
     public ModelAndView acessarListaCidades(){
     	ModelAndView mv = new ModelAndView("administrativo/cidades/lista");
     	mv.addObject("listaCidades", cidadeRepo.findAll());

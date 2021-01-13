@@ -25,7 +25,7 @@ public class FuncionarioController {
 	@Autowired
 	private CidadeRepository cidadeRepo;
    
-    @GetMapping("/funcionarios/cadastrar")
+    @GetMapping("/administrativo/funcionarios/cadastrar")
     public ModelAndView acessarCadastroUsucario (Funcionario funcionario){
         ModelAndView mv = new ModelAndView("administrativo/funcionarios/cadastro");
         mv.addObject("funcionario", funcionario);
@@ -33,7 +33,7 @@ public class FuncionarioController {
     	return mv;
     }
     
-    @GetMapping("/funcionarios/editar/{id}")
+    @GetMapping("/administrativo/funcionarios/editar/{id}")
     public ModelAndView editarFuncionario(@PathVariable("id") long id) {
 		Funcionario funcionario;
 		funcionario = funcionarioRepo.findById(id).get();
@@ -41,7 +41,7 @@ public class FuncionarioController {
     	
     }
     
-    @GetMapping("/funcionarios/remover/{id}")
+    @GetMapping("/administrativo/funcionarios/remover/{id}")
     public ModelAndView removerFuncionario(@PathVariable("id") long id) {
     	Optional<Funcionario> funcionario =  funcionarioRepo.findById(id);
 		funcionarioRepo.delete(funcionario.get());
@@ -50,7 +50,7 @@ public class FuncionarioController {
     }
     
     
-    @PostMapping("/funcionarios/cadastrar")
+    @PostMapping("/administrativo/funcionarios/cadastrar")
     public ModelAndView salvarUsuario(@Valid Funcionario funcionario, BindingResult resul) {
     	if(resul.hasErrors()) {
     		return acessarCadastroUsucario(funcionario);
@@ -63,7 +63,7 @@ public class FuncionarioController {
     
     
     // Listar os funcionários
-    @GetMapping("/funcionarios/listar")
+    @GetMapping("/administrativo/funcionarios/listar")
     public ModelAndView acessarListaUsucarios(){
     	ModelAndView mv = new ModelAndView("administrativo/funcionarios/lista");
     	mv.addObject("listaFuncionarios", funcionarioRepo.findAll());

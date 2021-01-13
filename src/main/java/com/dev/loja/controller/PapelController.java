@@ -21,7 +21,7 @@ public class PapelController {
 	@Autowired
 	private PapelRepository papelRepo;
 
-	@GetMapping("/papeis/cadastrar")
+	@GetMapping("/administrativo/papeis/cadastrar")
 	public ModelAndView acessarCadastroPapel(Papel papel) {
 		ModelAndView mv = new ModelAndView("administrativo/papeis/cadastro");
 		mv.addObject("papel", papel);
@@ -29,14 +29,14 @@ public class PapelController {
 		return mv;
 	}
 
-	@GetMapping("/papeis/editar/{id}")
+	@GetMapping("/administrativo/papeis/editar/{id}")
 	public ModelAndView editarPapel(@PathVariable("id") long id) {
 		Papel papel = papelRepo.findById(id).get();
 		return acessarCadastroPapel(papel);
 
 	}
 
-	@GetMapping("/papeis/remover/{id}")
+	@GetMapping("/administrativo/papeis/remover/{id}")
 	public ModelAndView removerPapel(@PathVariable("id") long id) {
 		Optional<Papel> papel = papelRepo.findById(id);
 		papelRepo.delete(papel.get());
@@ -44,7 +44,7 @@ public class PapelController {
 
 	}
 
-	@PostMapping("/papeis/cadastrar")
+	@PostMapping("/administrativo/papeis/cadastrar")
 	public ModelAndView salvarPapel(@Valid Papel papel, BindingResult resul) {
 		if (resul.hasErrors()) {
 			return acessarCadastroPapel(papel);
@@ -54,7 +54,7 @@ public class PapelController {
 		}
 	}
 
-	@GetMapping("/papeis/listar")
+	@GetMapping("/administrativo/papeis/listar")
 	public ModelAndView acessarListaPapeis() {
 		ModelAndView mv = new ModelAndView("administrativo/papeis/lista");
 		mv.addObject("listaPapeis", papelRepo.findAll());

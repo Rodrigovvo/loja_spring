@@ -27,7 +27,7 @@ public class PermissaoController {
 	@Autowired
 	private PapelRepository papelRepo;
 
-	@GetMapping("/permissoes/cadastrar")
+	@GetMapping("/administrativo/permissoes/cadastrar")
 	public ModelAndView acessarCadastroPermissao(Permissao permissao) {
 		ModelAndView mv = new ModelAndView("administrativo/permissoes/cadastro");
 		mv.addObject("permissao", permissao);
@@ -37,14 +37,14 @@ public class PermissaoController {
 		return mv;
 	}
 
-	@GetMapping("/permissoes/editar/{id}")
+	@GetMapping("/administrativo/permissoes/editar/{id}")
 	public ModelAndView editarPermissao(@PathVariable("id") long id) {
 		Permissao permissao = permissaoRepo.findById(id).get();
 		return acessarCadastroPermissao(permissao);
 
 	}
 
-	@GetMapping("/permissoes/remover/{id}")
+	@GetMapping("/administrativo/permissoes/remover/{id}")
 	public ModelAndView removerPermissao(@PathVariable("id") long id) {
 		Optional<Permissao> permissao = permissaoRepo.findById(id);
 		permissaoRepo.delete(permissao.get());
@@ -52,7 +52,7 @@ public class PermissaoController {
 
 	}
 
-	@PostMapping("/permissoes/cadastrar")
+	@PostMapping("/administrativo/permissoes/cadastrar")
 	public ModelAndView salvarPermissao(@Valid Permissao permissao, BindingResult resul) {
 		if (resul.hasErrors()) {
 			return acessarCadastroPermissao(permissao);
@@ -62,7 +62,7 @@ public class PermissaoController {
 		}
 	}
 
-	@GetMapping("/permissoes/listar")
+	@GetMapping("/administrativo/permissoes/listar")
 	public ModelAndView acessarListaPermissaos() {
 		ModelAndView mv = new ModelAndView("administrativo/permissoes/lista");
 		mv.addObject("listaPermissoes", permissaoRepo.findAll());

@@ -22,7 +22,7 @@ public class EstadoController {
 	private EstadoRepository estadoRepo;
 
 
-    @GetMapping("/estados/cadastrar")
+    @GetMapping("/administrativo/estados/cadastrar")
     public ModelAndView acessarCadastroEstado (Estado estado){
         ModelAndView mv = new ModelAndView("administrativo/estados/cadastro");
         mv.addObject("estado", estado);
@@ -30,14 +30,14 @@ public class EstadoController {
     	return mv;
     }
     
-    @GetMapping("/estados/editar/{id}")
+    @GetMapping("/administrativo/estados/editar/{id}")
     public ModelAndView editarEstado(@PathVariable("id") long id) {
     	Estado estado =  estadoRepo.findById(id).get();
         return acessarCadastroEstado(estado);
 
     }
     
-    @GetMapping("/estados/remover/{id}")
+    @GetMapping("/administrativo/estados/remover/{id}")
     public ModelAndView removerEstado(@PathVariable("id") long id) {
     	Optional<Estado> estado =  estadoRepo.findById(id);
 		estadoRepo.delete(estado.get());
@@ -46,7 +46,7 @@ public class EstadoController {
     }
     
     
-    @PostMapping("/estados/cadastrar")
+    @PostMapping("/administrativo/estados/cadastrar")
     public ModelAndView salvarEstado(@Valid Estado estado, BindingResult resul) {
     	if(resul.hasErrors()) {
     		return acessarCadastroEstado(estado);
@@ -58,7 +58,7 @@ public class EstadoController {
     
     
     // Listar os funcionários
-    @GetMapping("/estados/listar")
+    @GetMapping("/administrativo/estados/listar")
     public ModelAndView acessarListaEstados(){
     	ModelAndView mv = new ModelAndView("administrativo/estados/lista");
     	mv.addObject("listaEstados", estadoRepo.findAll());

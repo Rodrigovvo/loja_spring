@@ -12,7 +12,7 @@
 					<li class="nav-item active"><i class="oi oi-caret-right"></i>
 						<span>Lista de Produtos</span></li>
 				</ul>
-				<a class="btn btn-primary btn-md" href="/produtos/cadastrar"
+				<a class="btn btn-primary btn-md" href="/administrativo/produtos/cadastrar"
 					role="button"> <span class="oi oi-plus" title="Cadastro"
 					aria-hidden="true">Cadastrar Produtos</span>
 				</a>
@@ -45,7 +45,7 @@
 								alt="imagem produto" width="100px"/></td>
 
 							<td colspan="2"><a class="btn btn-info btn-sm"
-								th:href="@{/produtos/editar/{id}(id=${produto.id})}" role="button">
+								th:href="@{/administrativo/produtos/editar/{id}(id=${produto.id})}" role="button">
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 							</a> <a id="btn_produtos/excluir/1" class="btn btn-danger btn-sm"
 								data-toggle="modal" data-target="#modal-warning"
@@ -71,7 +71,7 @@
 												<button type="button" class="btn btn-outline pull-left"
 													data-dismiss="modal">Fechar</button>
 												<a type="button" class="btn btn-outline"
-													th:href="@{/produtos/remover/{id}(id=${produto.id})}"><i
+													th:href="@{/administrativo/produtos/remover/{id}(id=${produto.id})}"><i
 													class="fa fa-check"></i>&nbsp;Sim</a>
 											</div>
 										</div>

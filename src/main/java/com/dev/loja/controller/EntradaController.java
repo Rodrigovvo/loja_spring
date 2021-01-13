@@ -34,7 +34,7 @@ public class EntradaController {
 	@Autowired
 	private ProdutoRepository produtoRepo;
 
-	@GetMapping("/entrada/cadastrar")
+	@GetMapping("/administrativo/entrada/cadastrar")
 	public ModelAndView acessarEntradas(Entrada entrada, EntradaItens entradaItens) {
 		ModelAndView mv = new ModelAndView("administrativo/entrada/cadastro");
 		mv.addObject("listaEntradaItens", this.listaEntradaItens);
@@ -46,7 +46,7 @@ public class EntradaController {
 		return mv;
 	}
 
-	@PostMapping("/entrada/cadastrar")
+	@PostMapping("/administrativo/entrada/cadastrar")
 	public ModelAndView salvarEntrada(String acao, Entrada entrada, EntradaItens entradaItens) {
 
 		switch (acao) {
@@ -73,7 +73,7 @@ public class EntradaController {
 
 	}
 
-	@GetMapping("/entrada/listar")
+	@GetMapping("/administrativo/entrada/listar")
 	public ModelAndView acessarListaCidades() {
 		ModelAndView mv = new ModelAndView("administrativo/entrada/lista");
 		mv.addObject("listaEntrada", entradaRepo.findAll());
