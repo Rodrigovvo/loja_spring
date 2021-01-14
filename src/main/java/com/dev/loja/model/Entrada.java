@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 @Table(name = "entrada_produto")
 public class Entrada implements Serializable{
 
-	@SuppressWarnings("unused")
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -9,11 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.dev.loja.model.Produto;
+
 @Entity
 @Table(name = "entrada_itens")
 public class EntradaItens implements Serializable {
 
-	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

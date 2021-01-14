@@ -89,17 +89,5 @@ public class ProdutoController {
 		return mv;
 	}
 
-	@GetMapping("/administrativo/produtos/mostrarImagem/{imagem}")
-	@ResponseBody
-	public byte[] mostrarImagem(@PathVariable("imagem") String imagem) throws IOException {
-		File imageArquivo = new File(IMAGE_URL + imagem);
-		byte[] nulo = null;
-		if (imagem != null) {
-			if(imagem.trim().length() > 0) 
-				return Files.readAllBytes(imageArquivo.toPath());
-		} else {
-			return nulo;
-		}
-		return nulo;
-	}
+
 }
