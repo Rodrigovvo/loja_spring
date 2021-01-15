@@ -104,23 +104,31 @@
 					<div class="col-lg-4 col-md-6 mb-4"
 						th:each="produto : ${listaProdutos}">
 						<div class="card h-100">
-							<a href="#"><img class="card-img-top img-fluid"
-								th:src="@{/produtos/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}"
-								alt="imagem produto"></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#"><span th:text="${produto.nome}"></span></a>
-								</h4>
-								<h5 class="valor-identificador text-right">
-									R$ <span th:text="${produto.valorVenda}" data-mask="#.00"></span>
-								</h5>
-								<p class="card-text">
-									<span th:text="${produto.descricao}">></span>
-								</p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">&#9733; &#9733; &#9733;
-									&#9733; &#9734;</small>
+							<div class="single-publication">
+
+								<a href="#"><img class="card-img-top img-fluid"
+									th:src="@{/produtos/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}"
+									alt="imagem produto"></a>
+								<div class="publication-content">
+									<div class="card-body">
+
+										<h4 class="card-title">
+
+											<a href="#"><span th:text="${produto.nome}"></span></a>
+										</h4>
+										<h5 class="valor-identificador">
+											R$ <span th:text="${produto.valorVenda}"></span>
+										</h5>
+										<p class="card-text">
+											<span th:text="${produto.descricao}">></span>
+										</p>
+									</div>
+									<div class="add-to-cart">
+										<a href="/carrinho" class="default-btn">Adicione ao carrinho</a>
+
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
