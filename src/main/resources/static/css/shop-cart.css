@@ -3,8 +3,11 @@
 	font-family: 'Open Sans', sans-serif;
 }
 .main-heading {
-	font-size: 19px;
+	font-size: 20pt;
 	margin-bottom: 20px;
+	font-family: sans-serif;
+	font-weight: 100;
+	align-text: center;
 }
 .table-cart table {
     width: 100%;
@@ -200,4 +203,10 @@ input:focus {
 }
 .btn-cart-totals .round-black-btn {
 	margin: 10px 0; 
+}
+
+.mCS_img_loaded{
+		margin-left: 15px;
+	height: 35px;
+	weight: 35px;
 }
