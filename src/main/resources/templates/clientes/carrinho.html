@@ -61,49 +61,54 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+								<tr th:each="item : ${listaProdutos}">
 									<td>
 										<div class="display-flex align-center">
 											<div class="img-product">
 												<img
-													src="https://www.91-img.com/pictures/laptops/asus/asus-x552cl-sx019d-core-i3-3rd-gen-4-gb-500-gb-dos-1-gb-61721-large-1.jpg"
+													th:src="@{/produtos/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}"
 													alt="" class="mCS_img_loaded">
 											</div>
 											<div class="name-product">
-												Apple iPad Mini <br>G2356
+												<span th:text="${item.produto.nome}"></span>
 											</div>
-											<div class="price">R$1,250.00</div>
+											<div class="price">
+												<span th:text="${item.produto.valorVenda}"></span>
+											</div>
 										</div>
 									</td>
 									<td class="product-count">
 										<form action="#" class="count-inlineflex">
-											<div class="qtyminus">-</div>
-											<input type="text" name="quantity" value="1" class="qty">
-											<div class="qtyplus">+</div>
+											<div class="qtyminus"></div>
+												<input type="number" name="quantity" th:value="${item.quantidade}" class="qty">
+											<div class="qtyplus"></div>
 										</form>
 									</td>
 									<td>
-										<div class="total">R$6,250.00</div>
+										<div class="total">
+											R$<span th:text="${item.valorTotal}"></span>
+										</div>
 									</td>
 									<td><a href="#" title=""> <img
 											src="/image/delete.webp" alt="" class="mCS_img_loaded">
 									</a></td>
 								</tr>
-								
+
 							</tbody>
 						</table>
 						<div class="coupon-box">
 							<form action="#" method="get" accept-charset="utf-8">
 								<div class="coupon-input">
 									<input type="text" name="coupon code" placeholder="Coupon Code">
-									<button type="submit" class="round-black-btn">Cupom de Desconto</button>
+									<button type="submit" class="round-black-btn">Cupom de
+										Desconto</button>
 								</div>
 							</form>
 						</div>
 					</div>
-					
+
 				</div>
-			
+
 				<div class="col-lg-4">
 					<div class="cart-totals">
 						<h3>Cart Totals</h3>
@@ -125,8 +130,9 @@
 								</tbody>
 							</table>
 							<div class="btn-cart-totals">
-								<a href="#" class="update round-black-btn" title=""> Atualizar Carrinho
-								</a> <a href="#" class="checkout round-black-btn" title=""> Finalizar Compra</a>
+								<a href="#" class="update round-black-btn" title="">
+									Atualizar Carrinho </a> <a href="#"
+									class="checkout round-black-btn" title=""> Finalizar Compra</a>
 							</div>
 
 						</form>
@@ -142,8 +148,8 @@
 	</section>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
