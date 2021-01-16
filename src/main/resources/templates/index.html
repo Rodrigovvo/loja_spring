@@ -103,7 +103,8 @@
 										</p>
 									</div>
 									<div class="add-to-cart">
-										<a href="/carrinho" class="default-btn">Adicione ao carrinho</a>
+										<a th:href="@{/carrinho/adicionar/{id}(id=${produto.id})}"
+										 class="default-btn">Adicione ao carrinho</a>
 
 										</div>
 									</div>
