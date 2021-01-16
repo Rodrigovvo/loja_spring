@@ -9,8 +9,7 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public ModelAndView acessoNegado() {
-		ModelAndView mv = new ModelAndView("login");
-		return mv;
+		return new ModelAndView("login");
 	}
 
 }

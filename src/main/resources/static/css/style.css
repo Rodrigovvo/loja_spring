@@ -19,6 +19,7 @@ body {
     overflow: hidden;
 }
 
+
 /*
  * Content
  */
@@ -97,6 +98,21 @@ body {
 .navbar-toggle {
     display: inline-block;
     margin-left: 10px;
+}
+
+#logo{
+	text-align: center;
+	color: green;
+	margin-left: 33%;
+	font-weight: 100;
+	font-size: 28pt;
+	
+}
+#logo img{
+	margin-left: 15px;
+	height: 35px;
+	weight: 35px;
+	
 }
 
 /*
