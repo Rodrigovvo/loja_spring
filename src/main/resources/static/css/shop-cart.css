@@ -161,6 +161,9 @@ input:focus {
 	border-radius: 3px;
 	background: #e7e7e7;
 	padding: 25px;
+	-webkit-box-shadow: 6px 6px 10px #999; 
+	   -moz-box-shadow: 6px 6px 10px #999;
+	        box-shadow: 6px 6px 10px #999;
 }
 .cart-totals h3 {
 	font-size: 19px;

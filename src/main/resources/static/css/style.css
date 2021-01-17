@@ -51,6 +51,12 @@ body {
 	margin-bottom: 0px;
 }
 
+.navbar{
+	-webkit-box-shadow: 3px 0px 10px #999; 
+	   -moz-box-shadow: 3px 0px 10px #999;
+
+}
+
 .sidebar .nav-item {
 	width: 100%;
 }
@@ -103,8 +109,8 @@ body {
 #logo{
 	text-align: center;
 	color: green;
-	margin-left: 33%;
-	font-family: Liberation-Serif;
+	margin-left: 36%;
+	font-family: Liberation-Sans;
 	font-weight: 50;
 	font-size: 28pt;
 	font-style: italic;
@@ -115,6 +121,16 @@ body {
 	height: 35px;
 	weight: 35px;
 	
+}
+
+.name-logo{
+	display:flex;
+	align-content: column;
+}
+
+.card{
+	-webkit-box-shadow: 3px 0px 10px #999; 
+	   -moz-box-shadow: 3px 0px 10px #999;
 }
 
 /*
