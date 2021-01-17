@@ -52,6 +52,9 @@
 										<h5>Produto</h5>
 									</th>
 									<th>
+										<h5>Valor Unitário</h5>
+									</th>
+									<th>
 										<h5>Quantidade</h5>
 									</th>
 									<th>
@@ -72,24 +75,31 @@
 											<div class="name-product">
 												<span th:text="${item.produto.nome}"></span>
 											</div>
-											<div class="price">
-												<span th:text="${item.produto.valorVenda}"></span>
-											</div>
 										</div>
+									</td>
+									<td>
+										<div class="price">
+											R$<span th:text="${item.produto.valorVenda}"></span>
+										</div>
+
 									</td>
 									<td class="product-count">
 										<form action="#" class="count-inlineflex">
-											<div class="qtyminus"></div>
-												<input type="number" name="quantity" th:value="${item.quantidade}" class="qty">
-											<div class="qtyplus"></div>
+											<a class="qtyminus" role="button"
+												th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id}, acao=${2})}">-</a>
+											<input type="text" name="quantidade"
+												th:value="${item.quantidade}" class="qty"> <a
+												class="qtyplus" role="button"
+												th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id}, acao=${1})}">+</a>
 										</form>
 									</td>
 									<td>
 										<div class="total">
-											R$<span th:text="${item.valorTotal}"></span>
+											R$<span
+												th:text="${#numbers.formatDecimal(item.valorTotal, 0, 'POINT', 2, 'COMMA')}"></span>
 										</div>
 									</td>
-									<td><a href="#" title=""> <img
+									<td><a role="button" th:href="@{/removerProduto/{id}(id=${item.produto.id})}"title=""> <img
 											src="/image/delete.webp" alt="" class="mCS_img_loaded">
 									</a></td>
 								</tr>
@@ -117,20 +127,22 @@
 								<tbody>
 									<tr>
 										<td>Subtotal</td>
-										<td class="subtotal">R$2,589.00</td>
+										<td class="subtotal">R$<span> {Soma de todos os valores dos items}</span>
+
+										</td>
 									</tr>
 									<tr>
 										<td>Frete</td>
-										<td class="free-shipping">Frete Gratis</td>
+										<td class="free-shipping">Frete Grátis</td><!-- TODO: Implementar API de Frete -->
 									</tr>
 									<tr class="total-row">
 										<td>Total</td>
-										<td class="price-total">R$1,591.00</td>
+										<td class="price-total">R$1,591.00</td> <!-- TODO: Somar Total e Frete  -->
 									</tr>
 								</tbody>
 							</table>
 							<div class="btn-cart-totals">
-								<a href="#" class="update round-black-btn" title="">
+								<a href="/carrinho" class="update round-black-btn" title="">
 									Atualizar Carrinho </a> <a href="#"
 									class="checkout round-black-btn" title=""> Finalizar Compra</a>
 							</div>
