@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dev.loja.model.ItensCompra;
 import com.dev.loja.model.Produto;
 import com.dev.loja.repository.ProdutoRepository;
+import com.dev.loja.util.ValorTotalCarrinhoService;
 
 import javassist.NotFoundException;
 
@@ -29,6 +30,8 @@ public class CarrinhoController {
 	public ModelAndView acessoCarrinhoCompras() {
 		ModelAndView mv = new ModelAndView(caminhoCarrinho);
 		mv.addObject("listaProdutos", itensCompra);
+		ValorTotalCarrinhoService valorTotalCarrinhoService = new ValorTotalCarrinhoService();
+		mv.addObject("valorTotalCarrinho", valorTotalCarrinhoService.calcularTotalSemFrete(itensCompra));
 		return mv;
 	}
 
@@ -52,10 +55,9 @@ public class CarrinhoController {
 						return removerProdutoCarrinho(id);
 						}
 				default:
-					break;
+					throw new NotFoundException("Erro: Ação não localizada");
+					
 				}
-			}else {
-				throw new NotFoundException("Erro: Id do item não foi localizado"); 
 			}
 		}
 		return "redirect:/carrinho";
@@ -87,20 +89,30 @@ public class CarrinhoController {
 			for (ItensCompra item : itensCompra) {
 				if (item.getProduto().getId() == produto.get().getId()) {
 					item.setQuantidade(item.getQuantidade() + 1);
+					item.setValorTotal(item.getQuantidade() * item.getValorProduto());
 					contador = 1;
 					break;
-				}
+					}
 			}
 			if (contador == 0) {
 				ic.setProduto(produto.get());
 				ic.setValorProduto(produto.get().getValorVenda());
 				ic.setQuantidade(ic.getQuantidade() + 1);
-				ic.setValorTotal(ic.getQuantidade() * ic.getValorProduto());
+				ic.setValorTotal(ic.getQuantidade() *  produto.get().getValorVenda());
 				itensCompra.add(ic);
 			}
 		} else {
 			throw new NotFoundException("Error: Bad Request - Id do Produto não foi encontrado.");
 		}
 		return "redirect:/carrinho";
+	}
+	
+	@GetMapping("/finalizar")
+	public ModelAndView acessoNegado() {
+		ModelAndView mv = new ModelAndView("/clientes/finalizar-compra");
+		mv.addObject("listaProdutos", itensCompra);
+		ValorTotalCarrinhoService valorTotalCarrinhoService = new ValorTotalCarrinhoService();
+		mv.addObject("valorTotalCarrinho", valorTotalCarrinhoService.calcularTotalSemFrete(itensCompra));
+		return mv;
 	}
 }
