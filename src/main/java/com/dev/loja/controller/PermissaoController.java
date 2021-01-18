@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dev.loja.model.Permissao;
 import com.dev.loja.repository.FuncionarioRepository;
-import com.dev.loja.repository.PapelRepository;
+import com.dev.loja.repository.FuncaoRepository;
 import com.dev.loja.repository.PermissaoRepository;
 
 @Controller
@@ -25,7 +25,7 @@ public class PermissaoController {
 	@Autowired
 	private FuncionarioRepository funcionarioRepo;
 	@Autowired
-	private PapelRepository papelRepo;
+	private FuncaoRepository papelRepo;
 
 	@GetMapping("/administrativo/permissoes/cadastrar")
 	public ModelAndView acessarCadastroPermissao(Permissao permissao) {

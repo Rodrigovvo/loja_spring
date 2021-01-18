@@ -7,11 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="papeis")
-public class Papel {
+@Table(name="papeis") // Refere-se ao Papel desempenhado pelo Funcionario (Cargo/Atribuição) 
+public class Funcao {
 	
-	@SuppressWarnings("unused")
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;

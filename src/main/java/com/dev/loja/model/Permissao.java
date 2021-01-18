@@ -25,7 +25,7 @@ public class Permissao {
 	@ManyToOne
 	private Funcionario funcionario;
 	@ManyToOne
-	private Papel papel;
+	private Funcao funcao;
 
 	public long getId() {
 		return id;
@@ -51,12 +51,12 @@ public class Permissao {
 		this.funcionario = funcionario;
 	}
 
-	public Papel getPapel() {
-		return papel;
+	public Funcao getPapel() {
+		return funcao;
 	}
 
-	public void setPapel(Papel papel) {
-		this.papel = papel;
+	public void setPapel(Funcao funcao) {
+		this.funcao = funcao;
 	}
 
 }

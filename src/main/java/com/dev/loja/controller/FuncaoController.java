@@ -12,45 +12,45 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dev.loja.model.Papel;
-import com.dev.loja.repository.PapelRepository;
+import com.dev.loja.model.Funcao;
+import com.dev.loja.repository.FuncaoRepository;
 
 @Controller
-public class PapelController {
+public class FuncaoController {
 
 	@Autowired
-	private PapelRepository papelRepo;
+	private FuncaoRepository papelRepo;
 
 	@GetMapping("/administrativo/papeis/cadastrar")
-	public ModelAndView acessarCadastroPapel(Papel papel) {
+	public ModelAndView acessarCadastroPapel(Funcao funcao) {
 		ModelAndView mv = new ModelAndView("administrativo/papeis/cadastro");
-		mv.addObject("papel", papel);
+		mv.addObject("papel", funcao);
 
 		return mv;
 	}
 
 	@GetMapping("/administrativo/papeis/editar/{id}")
 	public ModelAndView editarPapel(@PathVariable("id") long id) {
-		Papel papel = papelRepo.findById(id).get();
-		return acessarCadastroPapel(papel);
+		Funcao funcao = papelRepo.findById(id).get();
+		return acessarCadastroPapel(funcao);
 
 	}
 
 	@GetMapping("/administrativo/papeis/remover/{id}")
 	public ModelAndView removerPapel(@PathVariable("id") long id) {
-		Optional<Papel> papel = papelRepo.findById(id);
-		papelRepo.delete(papel.get());
+		Optional<Funcao> funcao = papelRepo.findById(id);
+		papelRepo.delete(funcao.get());
 		return acessarListaPapeis();
 
 	}
 
 	@PostMapping("/administrativo/papeis/cadastrar")
-	public ModelAndView salvarPapel(@Valid Papel papel, BindingResult resul) {
+	public ModelAndView salvarPapel(@Valid Funcao funcao, BindingResult resul) {
 		if (resul.hasErrors()) {
-			return acessarCadastroPapel(papel);
+			return acessarCadastroPapel(funcao);
 		} else {
-			papelRepo.saveAndFlush(papel);
-			return acessarCadastroPapel(new Papel());
+			papelRepo.saveAndFlush(funcao);
+			return acessarCadastroPapel(new Funcao());
 		}
 	}
 
