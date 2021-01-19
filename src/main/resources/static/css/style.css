@@ -89,6 +89,10 @@ body {
     width: 300px;
 }
 
+.nav-color {
+    background-color: #ffffff !important;
+}
+
 /*
  * nav-pills home
  */
