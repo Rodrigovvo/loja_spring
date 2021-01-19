@@ -86,15 +86,16 @@
 							<div class="card h-100">
 								<div class="single-publication">
 
-									<a href="#"><img class="card-img-top img-fluid"
+									<a th:href="@{/detalhe/{id}(id=${produto.id})}"><img
+										class="card-img-top img-fluid"
 										th:src="@{/produtos/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}"
 										alt="imagem produto"></a>
 									<div class="publication-content">
 										<div class="card-body">
 
 											<h4 class="card-title">
-
-												<a href="#"><span th:text="${produto.nome}"></span></a>
+												<a th:href="@{/detalhe/{id}(id=${produto.id})}"> <span
+													th:text="${produto.nome}"></span></a>
 											</h4>
 
 											<p class="card-text">
