@@ -85,7 +85,7 @@ public class CarrinhoController {
 		ItensCompra ic = new ItensCompra();
 
 		if (produto.isPresent()) {
-			var contador = 0;
+			int contador = 0;
 			for (ItensCompra item : itensCompra) {
 				if (item.getProduto().getId() == produto.get().getId()) {
 					item.setQuantidade(item.getQuantidade() + 1);
