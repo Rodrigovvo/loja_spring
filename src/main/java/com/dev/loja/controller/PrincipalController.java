@@ -15,7 +15,7 @@ public class PrincipalController {
 	
     @GetMapping(value = {"/", " "})
     public ModelAndView acessarComprador(){
-    	ModelAndView mv = new ModelAndView("/index");
+    	ModelAndView mv = new ModelAndView("index");
     	mv.addObject("listaProdutos", produtoRepo.findAll());
         return mv;
     } 
