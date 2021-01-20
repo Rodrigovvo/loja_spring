@@ -10,7 +10,7 @@ public class DetalheProdutoController {
 
 	@GetMapping("/detalhe/{id}")
 	public ModelAndView acessoNegado(@PathVariable Long id) {
-		return new ModelAndView("/clientes/detalheProduto");
+		return new ModelAndView("clientes/detalheProduto");
 	}
 
 }
