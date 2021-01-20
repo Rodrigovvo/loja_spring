@@ -9,12 +9,12 @@ public class UsuarioLoginController {
 
 	@GetMapping("/cliente/cadastro/novousuario")
 	public ModelAndView novoClienteCadatrar() {
-		return new ModelAndView("/clientes/novo-usuario");
+		return new ModelAndView("clientes/novo-usuario");
 	}
 
 	
 	@GetMapping("/cliente/login")
 	public ModelAndView loginClienteCadastrado() {
-		return new ModelAndView("/clientes/login-usuario");
+		return new ModelAndView("clientes/login-usuario");
 	}
 }
